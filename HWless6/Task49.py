@@ -81,27 +81,27 @@ def defaut():
     print('Данный справочник не содержит данных символов! Проверьте ввод!')
 
 
-print("Приветствуем в нашем справочнике ! \n Выберите интересующую Вас ктаегорию: \n1 - Показать все записи \n2 - Найти запись по имени \n3 - Найти запись по телефону \n4 - Добавить новый контакт \n5 - Удалить контакт \n6 - Выход \n ")
+print("Приветствуем в нашем справочнике ! \n Выберите интересующую Вас ктаегорию: \n1 - Показать все записи \n2 - Найти запись по номеру телефона \n3 - Найти запись по имени \n4 - Добавить новый контакт \n5 - Удалить контакт \n6 - Выход \n ")
 userAnswer = input('Введите цифру: ')
 
 match userAnswer:
     case "1":
-        printAll(telDict)
+        show_all(phone_nums)
 
     case "2":
-        nameSearch(readFile(telDict))
+        phone_searh(readfile(phone_nums))
 
     case "3":
-        telSearch(readFile(telDict))
+        namesearch(readfile(phone_nums))
 
     case "4":
-        addData(telDict)
+        addContact(phone_nums)
 
     case "5":
-        deleteData(telDict)
+        deleteContact(phone_nums)
 
     case "6":
         exit(0)
 
     case _:
-        default()
+        defaut()
