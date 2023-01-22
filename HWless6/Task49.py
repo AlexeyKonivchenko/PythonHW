@@ -28,14 +28,17 @@
 # 7 - Выход
 
 
-phone_nums = " PhoneBook.txt "
+phone_nums = "HWless6/phones.txt"
+
 
 def show_all(file_name):
+    # Показать все записи
     show = open(file_name, 'r', encoding='utf8')
     print(show.read())
 
 
-def readfile(file_name):
+def readFile(file_name):
+    # приобразование данных в массив
     result = []
     with open(file_name, 'r+', encoding='utf8') as data:
         for line in data:
@@ -43,29 +46,33 @@ def readfile(file_name):
     return result
 
 
-def phone_searh(userlist):
-    phonenumber = ' ' + input('Введите номер телефона: ') + "\n"
-    for i in userlist:
-        if i[3] == phonenumber:
-            print(i[0] + ',' + i[1] + ',' + i[2] + ',' + i[3])
-
-
 def namesearch(dictArray):
-    name = ' ' + input("Введите имя пользователя: ")
+    # поиск по имени
+    name = ' ' + input('Введите имя пользователя: ')
     for i in dictArray:
         if i[1] == name:
-            print(i[0] + ',' + i[1] + ',' + i[2] + ',' + i[3])
+            print(i[0]+','+i[1]+','+i[2]+',' + i[3])
+
+
+def phone_searh(userList):
+    # поиск по телефону
+    phonenumber = ' ' + input('Введите номер телефона для поиска: ') + '\n'
+    for i in userList:
+        if i[3] == phonenumber:
+            print(i[0]+','+i[1]+','+i[2]+',' + i[3])
 
 
 def addContact(file_name):
-    new_contact = input('Введите ФИО и номер телефона через запятую(", "):  ')
+    # Добавление контакта
+    new_contact = input("Введите ФИО и номер телефона через запятую (', '): ")
     with open(file_name, 'a', encoding='utf8') as data:
         data.writelines(new_contact + '\n')
 
 
 def deleteContact(file_name):
+    # удаление записи
     contact_to_delete = input(
-        'Введите фамилию контакта: (удаление контакта возможно по его фамилии)')
+        "Введите фамилию контакта: (удаление контакта возможно по его фамилии)")
     s = ""
     with open(file_name, "r", encoding="utf8") as data:
         for line in data:
@@ -77,22 +84,22 @@ def deleteContact(file_name):
         data.write(s)
 
 
-def defaut():
-    print('Данный справочник не содержит данных символов! Проверьте ввод!')
+def default():
+    # Вывод, если ошибка
+    print("Данный справочник не содержит данных символов! Проверьте ввод!")
 
 
-print("Приветствуем в нашем справочнике ! \n Выберите интересующую Вас ктаегорию: \n1 - Показать все записи \n2 - Найти запись по номеру телефона \n3 - Найти запись по имени \n4 - Добавить новый контакт \n5 - Удалить контакт \n6 - Выход \n ")
+print("Приветствуем в нашем справочнике ! \n Выберите интересующую Вас ктаегорию: \n1 - Показать все записи \n2 - Найти запись по имени \n3 - Найти запись по телефону \n4 - Добавить новый контакт \n5 - Удалить контакт \n6 - Выход \n ")
 userAnswer = input('Введите цифру: ')
-
 match userAnswer:
     case "1":
         show_all(phone_nums)
 
     case "2":
-        phone_searh(readfile(phone_nums))
+        namesearch(readFile(phone_nums))
 
     case "3":
-        namesearch(readfile(phone_nums))
+        phone_searh(readFile(phone_nums))
 
     case "4":
         addContact(phone_nums)
@@ -104,4 +111,4 @@ match userAnswer:
         exit(0)
 
     case _:
-        defaut()
+        default()
