@@ -1,0 +1,4 @@
+Driver_1, Иванов
+Driver_2, Петров
+Driver_3, Сидоров
+Driver_4, Козлов/usr/local/bin/python3 "/Users/aleksejkonivcenko/GB work/Python/HWLess7/Main.py"

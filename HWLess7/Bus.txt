@@ -1,0 +1,4 @@
+Bus_1, К516РА77, KIA
+Bus_2, М550КА99, FORD
+Bus_3, А322РА97, MERCEDES-BENZ
+Bus_4, Р059ХА197, ЛИАЗ
